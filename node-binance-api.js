@@ -710,7 +710,11 @@ let api = function Binance( options = {} ) {
         ws.on( 'close', handleSocketClose.bind( ws, reconnect ) );
         ws.on( 'message', data => {
             try {
-                callback( JSON.parse( data ) );
+                if(data === "ping"){
+                    ws.send("pong");
+                }else{
+                    callback( JSON.parse( data ) );
+                }
             } catch ( error ) {
                 Binance.options.log( 'Parse error: ' + error.message );
             }
@@ -761,7 +765,11 @@ let api = function Binance( options = {} ) {
         ws.on( 'close', handleSocketClose.bind( ws, reconnect ) );
         ws.on( 'message', data => {
             try {
-                callback( JSON.parse( data ).data );
+                if(data === "ping"){
+                    ws.send("pong");
+                }else{
+                    callback( JSON.parse( data ).data );
+                }
             } catch ( error ) {
                 Binance.options.log( 'CombinedStream: Parse error: ' + error.message );
             }
@@ -906,7 +914,11 @@ let api = function Binance( options = {} ) {
         ws.on( 'close', handleFuturesSocketClose.bind( ws, params.reconnect ) );
         ws.on( 'message', data => {
             try {
-                callback( JSONbig.parse( data ) );
+                if(data === "ping"){
+                    ws.send("pong");
+                }else{
+                    callback( JSONbig.parse( data ) );
+                }
             } catch ( error ) {
                 Binance.options.log( 'Parse error: ' + error.message );
             }
@@ -961,7 +973,11 @@ let api = function Binance( options = {} ) {
         ws.on( 'close', handleFuturesSocketClose.bind( ws, params.reconnect ) );
         ws.on( 'message', data => {
             try {
-                callback( JSON.parse( data ).data );
+                if(data === "ping"){
+                    ws.send("pong");
+                }else{
+                    callback( JSON.parse( data ).data );
+                }
             } catch ( error ) {
                 Binance.options.log( `futuresSubscribe: Parse error: ${ error.message }` );
             }
@@ -1610,7 +1626,11 @@ let api = function Binance( options = {} ) {
         ws.on( 'close', handleDeliverySocketClose.bind( ws, params.reconnect ) );
         ws.on( 'message', data => {
             try {
-                callback( JSON.parse( data ) );
+                if(data === "ping"){
+                    ws.send("pong");
+                }else{
+                    callback( JSON.parse( data ) );
+                }
             } catch ( error ) {
                 Binance.options.log( 'Parse error: ' + error.message );
             }
@@ -1665,7 +1685,11 @@ let api = function Binance( options = {} ) {
         ws.on( 'close', handleDeliverySocketClose.bind( ws, params.reconnect ) );
         ws.on( 'message', data => {
             try {
-                callback( JSON.parse( data ).data );
+                if(data === "ping"){
+                    ws.send("pong");
+                }else{
+                    callback( JSON.parse( data ).data );
+                }
             } catch ( error ) {
                 Binance.options.log( `deliverySubscribe: Parse error: ${ error.message }` );
             }
