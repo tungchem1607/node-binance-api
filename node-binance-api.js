@@ -761,11 +761,7 @@ let api = function Binance( options = {} ) {
         ws.on( 'close', handleSocketClose.bind( ws, reconnect ) );
         ws.on( 'message', data => {
             try {
-                if(data === "ping"){
-                    ws.send("pong");
-                }else{
-                    callback( JSON.parse( data ).data );
-                }
+                callback( JSON.parse( data ).data );
             } catch ( error ) {
                 Binance.options.log( 'CombinedStream: Parse error: ' + error.message );
             }
